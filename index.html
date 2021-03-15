@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Recipe</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+			integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<div class="scroll-top">
+			<a href="#home"><img src="./images/up-button.png" alt=""></div></a>
+		<div class="container" id="home">
+			<div class="meal-wrapper">
+				<div class="meal-search">
+					<h2 class="title">Find meals for your ingredients</h2>
+					<blockquote>
+						Real food doesnt have ingredients, real food is ingridients<br />
+						<cite>-Jamie Oliver</cite>
+					</blockquote>
+
+					<div class="meal-search-box">
+						<input
+							type="text"
+							class="search-control"
+							placeholder="Enter an ingredient"
+							id="search-input"
+						/>
+						<button type="submit" class="search-btn btn" id="search-btn">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+
+					<div class="meal-result">
+						<h2>Your search results</h2>
+						<div id="meal">
+							<!-- <div class="meal-item">
+								<div class="meal-img">
+									<img src="./images/salad.jpg" alt="food" />
+								</div>
+								<div class="meal-name">
+									<h3>salad</h3>
+									<a href="#" class="recipe-btn">Get recipe</a>
+								</div>
+							</div> -->
+						</div>
+					</div>
+
+					<div class="meal-details">
+						<button
+							type="button"
+							class="btn recipe-close-btn"
+							id="recipe-close-btn"
+						>
+							<i class="fas fa-times"></i>
+						</button>
+
+						<div class="meal-details-content">
+							<!-- <h2 class="recipe-title">Meals Name Here</h2>
+							<p class="recipe-category">Category Name</p>
+							<div class="recipe-instruct">
+								<h3>Instructions</h3>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+									iure a nesciunt sequi iusto beatae blanditiis libero
+									reprehenderit omnis nostrum sunt iste deserunt facere
+									aspernatur id ab, nisi, nemo adipisci!
+								</p>
+							</div>
+							<div class="recipe-meal-img">
+								<img src="./images/salad.jpg" />
+							</div>
+							<div class="recipe-link">
+								<a href="#" target="_blank">Watch Video</a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./assets/js/app.js"></script>
+	</body>
+</html>
