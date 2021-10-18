@@ -6,28 +6,33 @@ const recipeBtn = document.querySelector("#recipe-close-btn");
 // console.log(searchBtn);
 
 searchBtn.addEventListener("click", getMealList);
-mealList.addEventListener('click', getMealRecipe)
-recipeBtn.addEventListener('click', () => {
-    mealDetailContent.parentElement.classList.remove('show-recipe')
-})
+// searchBtn.addEventListener("click", () => {
+//     alert(1)
+// });
+mealList.addEventListener("click", getMealRecipe);
+recipeBtn.addEventListener("click", () => {
+  mealDetailContent.parentElement.classList.remove("show-recipe");
+});
 
-window.addEventListener('scroll', () => {
-    let scroll = document.querySelector(".scroll-top");
-    scroll.classList.toggle('active', window.scrollY > 500)
-    // console.log(scroll)
-})
+window.addEventListener("scroll", () => {
+  let scroll = document.querySelector(".scroll-top");
+  scroll.classList.toggle("active", window.scrollY > 500);
+  // console.log(scroll)
+});
 
 function getMealList() {
-	let searchInputTxt = document.querySelector("#search-input").value.trim();
+  let searchInputTxt = document.querySelector("#search-input").value.trim();
 
-	fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
-		.then(response => response.json())
-		.then(data => {
-            console.log(data)
-			let html = "";
-            if(data.meals) {
-                data.meals.forEach(meal => {
-                    html += `
+  fetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      let html = "";
+      if (data.meals) {
+        data.meals.forEach((meal) => {
+          html += `
                         <div class="meal-item" data-id = '${meal.idMeal}'>
 							<div class="meal-img">
 								<img src='${meal.strMealThumb}' alt="food" />
@@ -38,33 +43,34 @@ function getMealList() {
 						    </div>
 						</div>
                     `;
-                });  
-                 mealList.classList.remove("notfound");
-            } else {
-                html = "We didnt find any meal"
-                mealList.classList.add('notfound')
-            }
+        });
+        mealList.classList.remove("notfound");
+      } else {
+        html = "We didn't find any meal";
+        mealList.classList.add("notfound");
+      }
 
-              mealList.innerHTML = html;
-		});
+      mealList.innerHTML = html;
+    });
 }
 
-
 function getMealRecipe(e) {
-    e.preventDefault();
-    if(e.target.classList.contains('recipe-btn')) {
-        let mealItem = e.target.parentElement.parentElement;
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-        .then( res => res.json())
-        .then(data => mealRecipeModal(data.meals));
-    }
+  e.preventDefault();
+  if (e.target.classList.contains("recipe-btn")) {
+    let mealItem = e.target.parentElement.parentElement;
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`
+    )
+      .then((res) => res.json())
+      .then((data) => mealRecipeModal(data.meals));
+  }
 }
 
 function mealRecipeModal(meal) {
-    console.log(meal);
-    meal = meal[0];
+  console.log(meal);
+  meal = meal[0];
 
-    let html = `
+  let html = `
         <h2 class="recipe-title">${meal.strMeal}</h2>
 		<p class="recipe-category">${meal.strCategory}</p>
 		<div class="recipe-instruct">
@@ -78,6 +84,6 @@ function mealRecipeModal(meal) {
 			<a href="${meal.strYoutube}" target="_blank">Watch Video</a>
 		</div>
     `;
-    mealDetailContent.innerHTML = html;
-    mealDetailContent.parentElement.classList.add('show-recipe')
+  mealDetailContent.innerHTML = html;
+  mealDetailContent.parentElement.classList.add("show-recipe");
 }
